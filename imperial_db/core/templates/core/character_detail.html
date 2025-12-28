@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ character.name }} - Imperial DB</title>
+</head>
+<body>
+    <h1>{{ character.name }}</h1>
+    <p><strong>Species:</strong> {{ character.species }}</p>
+    <p><strong>Homeworld:</strong> {{ character.homeworld }}</p>
+    <p><strong>Bio:</strong></p>
+    <p>{{ character.bio|default:"(no bio)" }}</p>
+
+    <h2>Ships</h2>
+    <ul>
+    {% for ship in ships %}
+        <li><a href="{% url 'core:ship_detail' ship.pk %}">{{ ship.name }}</a> - {{ ship.model }}</li>
+    {% empty %}
+        <li>No ships for this character.</li>
+    {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'core:character_list' %}">Back to all characters</a></p>
+</body>
+</html>
