@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Imperial Database - Characters</title>
+</head>
+<body>
+    <h1>All Characters</h1>
+    <p>This is a simple list of characters. Click a name to see details.</p>
+    <ul>
+    {% for c in characters %}
+        <li><a href="{% url 'core:character_detail' c.pk %}">{{ c.name }}</a> - {{ c.species }}</li>
+    {% empty %}
+        <li>No characters available.</li>
+    {% endfor %}
+    </ul>
+    <hr>
+    <p>Admin: <a href="/admin/">open admin</a></p>
+</body>
+</html>
